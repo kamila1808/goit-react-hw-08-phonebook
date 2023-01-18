@@ -49,3 +49,21 @@ export const logout = createAsyncThunk(
     }
   }
 );
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, { rejectWithValue, getState }) => {
+    const tokenLocalStorage = getState().auth.token;
+    if(!tokenLocalStorage){
+      return rejectWithValue('No token');
+    }
+    token.set(tokenLocalStorage)
+    try {
+      const { data } = await axios('/users/current');
+      return data;
+
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
