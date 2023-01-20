@@ -15,6 +15,8 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(logout.fulfilled, state => {
+        state.isLoading = false;
+        state.error = null;
         state.token = null;
         state.user = { name: '', email: '' };
       })
@@ -22,7 +24,12 @@ const authSlice = createSlice({
         state.isFetchingCurrentUser = true;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
         state.user = payload;
+        state.isFetchingCurrentUser = false;
+      })
+      .addCase(fetchCurrentUser.rejected, (state) => {
         state.isFetchingCurrentUser = false;
       })
 
@@ -41,8 +48,6 @@ const authSlice = createSlice({
         isAnyOf(
           register.fulfilled,
           login.fulfilled,
-          logout.fulfilled,
-          fetchCurrentUser.fulfilled
         ),
         (state, { payload: { user, token } }) => {
           state.isLoading = false;
