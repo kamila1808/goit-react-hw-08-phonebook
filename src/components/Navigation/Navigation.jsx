@@ -1,22 +1,25 @@
-import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectToken } from 'redux/auth/auth-selectors';
+
+import { List, ListItem, NavigationLink } from './Navigation.styled';
 
 export const Navigation = () => {
   const token = useSelector(selectToken);
 
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
+      <List>
+      {token && (
+        <ListItem>
+          <NavigationLink to="/">Home</NavigationLink>
+        </ListItem>
+         )}
         {token && (
-          <li>
-            <NavLink to="contacts">Contacts</NavLink>
-          </li>
+          <ListItem>
+            <NavigationLink to="contacts">Contacts</NavigationLink>
+          </ListItem>
         )}
-      </ul>
+      </List>
     </nav>
   );
 };

@@ -1,3 +1,5 @@
+import { H1 } from "./HomePage.styled"
+
 export const HomePage = () => {
-    return <h1>Welcome to Phonebook!</h1>
+    return <H1>Welcome to Phonebook!</H1>
 }
