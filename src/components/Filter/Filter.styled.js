@@ -6,6 +6,8 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   color: olive;
+  margin-left: 20px;
+
 `;
 
 export const Input = styled.input`
@@ -14,6 +16,7 @@ margin-top: 5px;
   padding: 10px;
   border-radius: 10px;
   color: grey;
+
   border: 1px solid #dcdcdc;
   &:hover,
   &:focus {

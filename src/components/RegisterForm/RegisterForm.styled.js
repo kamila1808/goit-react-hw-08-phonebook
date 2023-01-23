@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Form = styled.form`
+margin-left: 20px;
+margin-top: 25px;
+`
+
 export const Label = styled.label`
   margin-top: 15px;
   margin-bottom: 10px;
@@ -28,6 +33,7 @@ export const Button = styled.button`
   background-color: transparent;
   border:1px solid #dcdcdc;
   cursor: pointer;
+  font-size: 15px;
 
   &:hover,
   &:focus {

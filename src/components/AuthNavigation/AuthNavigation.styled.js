@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const Nav = styled.nav`
+  margin-top: 15px;
+  margin-left: 20px;
+
+`
+
 export const List = styled.ul`
   display: flex;
-  margin: 15px;
   font-size: 18px;
 `;
 

@@ -13,7 +13,7 @@ export const Layout = () => {
     <>
       <header>
       <Navigation />
-        {token ? <UserAuthMenu /> : <AuthNavigation />}
+        {!token ? <AuthNavigation /> : < UserAuthMenu/>}
       </header>
       <main>
         <Outlet />

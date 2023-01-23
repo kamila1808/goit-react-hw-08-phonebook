@@ -9,7 +9,7 @@ margin-right: 15px;
 
 export const P = styled.p`
 margin-right: 15px;
-color: rgba(0, 0, 255, 0.6);
+color: grey;
 font-weight: 600;
 
 `
@@ -21,7 +21,7 @@ export const Button = styled.button`
   background-color: transparent;
   border:1px solid #dcdcdc;
   cursor: pointer;
-
+  font-size: 12px;
 
   &:hover,
   &:focus {

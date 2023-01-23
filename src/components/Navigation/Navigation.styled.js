@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-
 import { NavLink } from 'react-router-dom';
+
+export const Nav = styled.nav`
+  margin-top: 25px;
+  margin-left: 20px;
+`;
 
 export const List = styled.ul`
   display: flex;
-  margin: 15px;
   font-size: 18px;
 `;
 
@@ -16,7 +19,7 @@ export const NavigationLink = styled(NavLink)`
   padding: 10px;
   border-radius: 10px;
   color: grey;
-  border:1px solid #dcdcdc;
+  border: 1px solid #dcdcdc;
 
   &:hover,
   &:focus {

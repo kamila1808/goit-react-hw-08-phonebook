@@ -1,9 +1,9 @@
 
-import { List, ListItem, NavigationLink } from './AuthNavigation.styled';
+import { Nav, List, ListItem, NavigationLink } from './AuthNavigation.styled';
 
 export const AuthNavigation = () => {
   return (
-    <nav>
+    <Nav>
       <List>
         <ListItem>
           <NavigationLink to="/">Home</NavigationLink>
@@ -15,6 +15,6 @@ export const AuthNavigation = () => {
           <NavigationLink to="login">Login</NavigationLink>
         </ListItem>
       </List>
-    </nav>
+    </Nav>
   );
 };

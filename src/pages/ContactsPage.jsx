@@ -9,6 +9,7 @@ import { Filter } from 'components/Filter/Filter';
 import { selectIsLoading } from 'redux/contacts/contacts-selectors';
 
 
+
 export const ContactsPage = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectIsLoading);
@@ -19,6 +20,7 @@ export const ContactsPage = () => {
 
       return (
         <>
+
         <ContactForm/>
         <Filter />
         {isLoading && <h1>LOADING</h1>}
