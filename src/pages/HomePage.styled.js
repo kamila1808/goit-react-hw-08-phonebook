@@ -4,6 +4,9 @@ export const H1 = styled.h1`
 text-align: center;
 color: grey;
 margin-top: 20px;
+font-family: Ubuntu, sans-serif;
+    font-style: italic;
+    font-weight: 200;
 `
 
 export const Img = styled.img`
