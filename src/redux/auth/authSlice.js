@@ -14,11 +14,21 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-    .addCase(login.fulfilled, (state, { payload: { user, token } }) => {
-      state.token = token;
+    .addCase(register.fulfilled, (state, { payload: user, token }) => {
+      state.isLoading = false;
       state.user = user;
+      state.token = token;
+      state.error = null;
     })
+      .addCase(login.fulfilled, (state, { payload: { user, token } }) => {
+        state.isLoading = false;
+        state.user = user;
+        state.token = token;
+        state.error = null;
+      })
       .addCase(logout.fulfilled, state => {
+        state.isLoading = false;
+        state.error = null;
         state.token = null;
         state.user = { name: '', email: '' };
       })
@@ -29,7 +39,7 @@ const authSlice = createSlice({
         state.user = payload;
         state.isFetchingCurrentUser = false;
       })
-      .addCase(fetchCurrentUser.rejected, (state) => {
+      .addCase(fetchCurrentUser.rejected, state => {
         state.isFetchingCurrentUser = false;
       })
 
@@ -44,18 +54,18 @@ const authSlice = createSlice({
           state.isLoading = true;
         }
       )
-      .addMatcher(
-        isAnyOf(
-          register.fulfilled,
-          login.fulfilled,
-          logout.fulfilled,
-          fetchCurrentUser.fulfilled
-        ),
-        (state) => {
-          state.isLoading = false;
-          state.error = null;
-        }
-      )
+      // .addMatcher(
+      //   isAnyOf(
+      //     register.fulfilled,
+      //     login.fulfilled,
+      //     logout.fulfilled,
+      //     fetchCurrentUser.fulfilled
+      //   ),
+      //   state => {
+      //     state.isLoading = false;
+      //     state.error = null;
+      //   }
+      // )
       .addMatcher(
         isAnyOf(
           register.rejected,

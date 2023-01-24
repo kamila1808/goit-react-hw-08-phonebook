@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Suspense } from 'react';
 
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
 
-import { selectIsFetchingCurrentUser } from 'redux/auth/auth-selectors';
+// import { selectIsFetchingCurrentUser } from 'redux/auth/auth-selectors';
 
 import { HomePage } from 'pages/HomePage';
 import { RegisterPage } from 'pages/RegisterPage';
@@ -16,15 +17,19 @@ import { PublicRoute } from 'HOCs/PublicRoute';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
+  // const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
+
+
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
+
+
   return (
     <>
-     {!isFetchingCurrentUser && ( 
+    <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route
@@ -33,14 +38,6 @@ const App = () => {
                 <PublicRoute>
                   <HomePage />
                 </PublicRoute>
-              }
-            />
-            <Route
-              path="contacts"
-              element={
-                <PrivateRoute>
-                  <ContactsPage />
-                </PrivateRoute>
               }
             />
             <Route
@@ -59,9 +56,17 @@ const App = () => {
                 </PublicRoute>
               }
             />
+                        <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
           </Route>
         </Routes>
-     )}
+        </Suspense>
     </> 
   );
 };
