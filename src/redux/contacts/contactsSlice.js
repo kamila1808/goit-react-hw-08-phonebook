@@ -5,19 +5,19 @@ import { addContact } from './contacts-operations';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: { items: [], isLoading: false, error: null },
+  initialState: { contacts: [], isLoading: false, error: null },
   extraReducers: builder =>
     builder
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-        state.items = payload;
+        state.contacts = payload;
       })
 
       .addCase(deleteContact.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter(({ id }) => id !== payload);
+        state.contacts = state.contacts.filter(({ id }) => id !== payload);
       })
 
       .addCase(addContact.fulfilled, (state, { payload }) => {
-        state.items = [...state.items, payload];
+        state.contacts = [...state.contacts, payload];
       })
 
       .addMatcher(

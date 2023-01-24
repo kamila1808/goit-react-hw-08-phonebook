@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './contacts/contactsSlice';
 import filterReduser from './filter/filterSlice';
@@ -13,6 +14,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 
 const authPersistConfig = {
   key: 'auth',
@@ -34,4 +36,9 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
+export const persistor = persistStore(store, null, () => {
+  axios.defaults.headers.common.Authorization = `Bearer ${
+    store.getState().auth.token
+  }`;
+});
