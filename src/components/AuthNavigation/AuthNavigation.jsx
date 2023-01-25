@@ -6,9 +6,6 @@ export const AuthNavigation = () => {
     <Nav>
       <List>
         <ListItem>
-          <NavigationLink to="/">Home</NavigationLink>
-        </ListItem>
-        <ListItem>
           <NavigationLink to="register">Register</NavigationLink>
         </ListItem>
         <ListItem>

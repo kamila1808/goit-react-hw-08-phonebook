@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Nav = styled.nav`
+display: flex;
   margin-top: 25px;
   margin-left: 20px;
 `;

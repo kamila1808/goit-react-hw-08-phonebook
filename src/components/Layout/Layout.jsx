@@ -6,15 +6,17 @@ import { AuthNavigation } from 'components/AuthNavigation/AuthNavigation';
 import { UserAuthMenu } from 'components/UserAuthMenu/UserAuthMenu';
 import { selectToken } from 'redux/auth/auth-selectors';
 
+import { Header } from './Layout.styled';
+
 export const Layout = () => {
   const token = useSelector(selectToken);
 
   return (
     <>
-      <header>
+      <Header>
       <Navigation />
-        {!token ? <AuthNavigation /> : < UserAuthMenu/>}
-      </header>
+        {token ? < UserAuthMenu/> : <AuthNavigation />  }
+      </Header>
       <main>
         <Outlet />
       </main>

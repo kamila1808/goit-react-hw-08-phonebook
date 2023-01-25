@@ -23,45 +23,46 @@ const App = () => {
 
   return (
     <>
-     {!isFetchingCurrentUser && ( 
+      {!isFetchingCurrentUser && (
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route
-              index
+              path="/register"
               element={
-                <PublicRoute>
-                  <HomePage />
-                </PublicRoute>
+                <PublicRoute
+                  redirectTo="/contacts"
+                  component={<RegisterPage />}
+                />
               }
             />
 
-            <Route
+            {/* <Route
               path="register"
               element={
                 <PublicRoute restricted>
                   <RegisterPage />
                 </PublicRoute>
               }
-            />
+            /> */}
             <Route
-              path="login"
+              path="/login"
               element={
-                <PublicRoute restricted>
-                  <LoginPage />
-                </PublicRoute>
+                <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
               }
             />
             <Route
-              path="contacts"
+              path="/contacts"
               element={
-                <PrivateRoute>
-                  <ContactsPage />
-                </PrivateRoute>
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<ContactsPage />}
+                />
               }
             />
           </Route>
         </Routes>
-         )}
+      )}
     </>
   );
 };

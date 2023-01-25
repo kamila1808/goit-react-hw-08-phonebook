@@ -4,16 +4,21 @@ import { NavLink } from 'react-router-dom';
 export const Nav = styled.nav`
   margin-top: 15px;
   margin-left: 20px;
+  display: flex;
+  
 
 `
 
 export const List = styled.ul`
   display: flex;
   font-size: 18px;
+  display: flex
+
 `;
 
 export const ListItem = styled.li`
   margin-right: 20px;
+
 `;
 
 export const NavigationLink = styled(NavLink)`
@@ -21,6 +26,7 @@ export const NavigationLink = styled(NavLink)`
   border-radius: 10px;
   color: grey;
   border:1px solid #dcdcdc;
+
 
   &:hover,
   &:focus {

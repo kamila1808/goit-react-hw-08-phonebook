@@ -9,11 +9,11 @@ export const Navigation = () => {
   return (
     <Nav>
       <List>
-      {token && (
+      
         <ListItem>
           <NavigationLink to="/">Home</NavigationLink>
         </ListItem>
-         )}
+       
         {token && (
           <ListItem>
             <NavigationLink to="contacts">Contacts</NavigationLink>
