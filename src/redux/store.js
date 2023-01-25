@@ -42,3 +42,4 @@ export const persistor = persistStore(store, null, () => {
     store.getState().auth.token
   }`;
 });
+
